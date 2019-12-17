@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     #User apps
     'pages.apps.PagesConfig',
     'users.apps.UsersConfig',
-    'books.apps.BooksConfig'
+    'books.apps.BooksConfig',
+    'orders.apps.OrdersConfig',
 ]
 
 MIDDLEWARE = [
@@ -158,3 +159,7 @@ AUTH_USER_MODEL = 'users.CustomUser' # new
 LOGIN_REDIRECT_URL = 'home'
 ACCOUNT_LOGOUT_REDIRECT = 'home'  # remplace la ligne suivante pour allauth
 #LOGOUT_REDIRECT_URL = 'home'
+
+# Stripe
+STRIPE_TEST_PUBLISHABLE_KEY= 'pk_test_zOGJNKHphFaHM8ARPF2Wgqta00NLnsR97Q'
+STRIPE_TEST_SECRET_KEY= 'sk_test_q0OAmUGKzmaiYMiYTeuaiNqD00EdwKKCVA'
