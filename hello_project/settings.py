@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 
 import os
 
+INTERNAL_IPS = '127.0.0.1'
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -43,6 +45,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'allauth',
     'allauth.account',
+    'debug_toolbar',
     #User apps
     'pages.apps.PagesConfig',
     'users.apps.UsersConfig',
@@ -51,6 +54,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'django.middleware.cache.UpdateCacheMiddleware', ## cache du site
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -58,6 +62,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',  ## debug_toolbar
+    'django.middleware.cache.FetchFromCacheMiddleware', # cache du site
 ]
 
 ROOT_URLCONF = 'hello_project.urls'
@@ -163,3 +169,8 @@ ACCOUNT_LOGOUT_REDIRECT = 'home'  # remplace la ligne suivante pour allauth
 # Stripe
 STRIPE_TEST_PUBLISHABLE_KEY= 'pk_test_zOGJNKHphFaHM8ARPF2Wgqta00NLnsR97Q'
 STRIPE_TEST_SECRET_KEY= 'sk_test_q0OAmUGKzmaiYMiYTeuaiNqD00EdwKKCVA'
+
+##Configuration du cache
+CACHE_MIDDLEWARE_ALIAS = 'default'
+CACHE_MIDDLEWARE_SECONDS = 604800
+CACHE_MIDDLEWARE_KEY_PREFIX = ''
