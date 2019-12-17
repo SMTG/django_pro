@@ -19,7 +19,9 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    #path('admin/', admin.site.urls),
+    ## pour la securite admin par 'lesadmins'
+    path('lesadmins/', admin.site.urls),
     # User management
     path('accounts/', include('allauth.urls')),
 

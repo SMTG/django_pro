@@ -25,9 +25,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '*z1dj9a53969zllsf_cp!&_)@g46_7wjdv3pv%s_8a+ed=!5d7'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False # en production
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['.herokuapp.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -174,3 +174,16 @@ STRIPE_TEST_SECRET_KEY= 'sk_test_q0OAmUGKzmaiYMiYTeuaiNqD00EdwKKCVA'
 CACHE_MIDDLEWARE_ALIAS = 'default'
 CACHE_MIDDLEWARE_SECONDS = 604800
 CACHE_MIDDLEWARE_KEY_PREFIX = ''
+## Configuration securite en production
+SECURE_BROWSER_XSS_FILTER = True
+X_FRAME_OPTIONS = 'DENY'
+SECURE_SSL_REDIRECT = True
+# configuration HTTP Strict Transport Security (HSTS) pour la securite
+SECURE_HSTS_SECONDS = 3600 
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True 
+SECURE_HSTS_PRELOAD = True
+SECURE_CONTENT_TYPE_NOSNIFF = True
+# HTTP Cookie securite
+SESSION_COOKIE_SECURE = True 
+#CSRF COOKIE
+CSRF_COOKIE_SECURE = True
