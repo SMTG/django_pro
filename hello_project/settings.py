@@ -27,7 +27,7 @@ SECRET_KEY = '*z1dj9a53969zllsf_cp!&_)@g46_7wjdv3pv%s_8a+ed=!5d7'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False # en production
 
-ALLOWED_HOSTS = ['.herokuapp.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['smtgbooks2.herokuapp.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
