@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'whitenoise.runserver_nostatic', #configuration de whitenoise avant staticfiles
     'django.contrib.staticfiles',
     # ajouter pour sites
     'django.contrib.sites',
@@ -55,6 +56,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.cache.UpdateCacheMiddleware', ## cache du site
+    'whitenoise.middleware.WhiteNoiseMiddleware', # configuration de whitenoise
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -187,3 +189,8 @@ SECURE_CONTENT_TYPE_NOSNIFF = True
 SESSION_COOKIE_SECURE = True 
 #CSRF COOKIE
 CSRF_COOKIE_SECURE = True
+
+# Heroku
+import dj_database_url
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)
